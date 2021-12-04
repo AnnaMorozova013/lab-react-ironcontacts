@@ -14,6 +14,8 @@ function App() {
         <th>Picture</th>
         <th>Name</th>
         <th>Popularity</th>
+        <th>Won Oscar</th>
+        <th>Won Emmy</th>
       </tr>
 
       {contacts.map(contact => {
@@ -23,6 +25,8 @@ function App() {
             <td><img src={contact.pictureUrl} style={{width: '80px'}} alt=''/></td>
             <td>{contact.name}</td>
             <td>{contact.popularity}</td>
+            <td>{contact.wonOscar === true && <p>🏆 </p>}</td>
+            <td>{contact.wonEmmy === true && <p>🏆 </p>}</td>
           </tr>
         )
       })}
