@@ -10,7 +10,7 @@ function App() {
   const randomContact = () => {
     const newContact = allContacts[Math.floor(Math.random() * allContacts.length)]
     const isIncluded = contacts.find((contact) => newContact.name === contact.name)
-    if (!isIncluded) setContacts([...contacts, newContact])
+    if (!isIncluded) setContacts(contacts => [newContact, ...contacts])
     else randomContact();
   }
 
