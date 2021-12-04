@@ -1,6 +1,18 @@
-.App {
+.app {
   display: flex;
-  text-align: center;
   justify-content: center;
+  align-items: center;
 }
 
+.table {
+  display:  table-row;
+  width:auto;
+  background-color:#eee;
+  border:1px solid  #666666;
+  border-spacing:5px;
+  text-align: center;
+}
+
+.button {
+  margin-bottom: 50px
+}
