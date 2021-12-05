@@ -28,6 +28,16 @@ function App() {
     })
   }
 
+  const deleteContact = (id) => {
+    const deletedContact = contacts.filter((i) => {
+      return i.id !== id
+    })
+    setContacts([...deletedContact])
+  }
+
+  console.log(contacts.length)
+
+
   return <div className="app">
     <table className="table">
       <h1> IronContacts </h1>
@@ -40,6 +50,7 @@ function App() {
         <th>Popularity</th>
         <th>Won Oscar</th>
         <th>Won Emmy</th>
+        <th>Actions</th>
       </tr>
 
       {contacts.map(contact => {
@@ -50,6 +61,7 @@ function App() {
             <td>{contact.popularity.toFixed(2)}</td>
             <td>{contact.wonOscar ? <p> 🏆 </p> : <p></p>}</td>
             <td>{contact.wonEmmy ? <p> 🏆 </p> : <p></p>}</td>
+            <td> <button className='deleteButton' onClick={() => deleteContact(contact.id)}> Delete </button></td>
           </tr>
         )
       })}
