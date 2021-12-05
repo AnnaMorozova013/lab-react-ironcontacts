@@ -14,10 +14,26 @@ function App() {
     else randomContact();
   }
 
+  const sortPopular = () => {
+    setContacts(contacts => {
+      const sortedPopular = contacts.sort((a, b) => b.popularity - a.popularity)
+      return ([...sortedPopular])
+    })
+  }
+
+  const sortName = () => {
+    setContacts(contacts => {
+      const sortedNames = contacts.sort((a, b) => a.name.toUpperCase().localeCompare(b.name.toUpperCase()))
+      return [...sortedNames]
+    })
+  }
+
   return <div className="app">
     <table className="table">
       <h1> IronContacts </h1>
-      <button className="button" onClick={randomContact}> Add contact </button>
+      <button className="button" onClick={randomContact}> Add Random Contact </button>
+      <button className="button" onClick={sortPopular}> Sort by Popularity </button>
+      <button className="button" onClick={sortName}> Sort by Name </button>
       <tr>
         <th>Picture</th>
         <th>Name</th>
@@ -28,13 +44,12 @@ function App() {
 
       {contacts.map(contact => {
         return (
-
           <tr>
             <td><img src={contact.pictureUrl} style={{ width: '80px' }} alt='' /></td>
             <td>{contact.name}</td>
-            <td>{contact.popularity}</td>
-            <td>{contact.wonOscar === true && <p>🏆 </p>}</td>
-            <td>{contact.wonEmmy === true && <p>🏆 </p>}</td>
+            <td>{contact.popularity.toFixed(2)}</td>
+            <td>{contact.wonOscar ? <p> 🏆 </p> : <p></p>}</td>
+            <td>{contact.wonEmmy ? <p> 🏆 </p> : <p></p>}</td>
           </tr>
         )
       })}
